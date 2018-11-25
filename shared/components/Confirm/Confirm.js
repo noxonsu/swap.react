@@ -27,6 +27,7 @@ const Confirm = ({ rootClassName, isConfirm, isReject, title, animation }) => (
             <FormattedMessage id="ConConfirm25firm20" defaultMessage="No" />
           </h3>
         </Button>
+        Button
       </div>
     </div>
   </Center>
