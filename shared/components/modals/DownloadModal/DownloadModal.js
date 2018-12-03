@@ -68,20 +68,20 @@ export default class DownloadModal extends React.Component {
           </Button>
         </CopyToClipboard>
         <div styleName="style">
-          <p><FormattedMessage id="down70" defaultMessage="Ethereum address: " /><a>{ethData.address}</a></p>
-          <p><FormattedMessage id="down71" defaultMessage="Ethereum Private key: " /><a>{ethData.privateKey}</a></p>
+          <div><FormattedMessage id="down70" defaultMessage="Ethereum address: " /><p>{ethData.address}</p></div>
+          <div><FormattedMessage id="down71" defaultMessage="Ethereum Private key: " /><p>{ethData.privateKey}</p></div>
 
-          <p><FormattedMessage id="down73" defaultMessage="Bitcoin address: " /><a>{btcData.address}</a></p>
-          <p><FormattedMessage id="down74" defaultMessage="Bitcoin Private key: " /><a>{btcData.privateKey}</a></p>
+          <div><FormattedMessage id="down73" defaultMessage="Bitcoin address: " /><p>{btcData.address}</p></div>
+          <div><FormattedMessage id="down74" defaultMessage="Bitcoin Private key: " /><p>{btcData.privateKey}</p></div>
 
-          <p><FormattedMessage id="down76" defaultMessage="EOS Master Private Key: " /><a>{eosData.masterPrivateKey}</a></p>
-          <p><FormattedMessage id="down77" defaultMessage="EOS Account name: " /><a>{eosData.address}</a></p>
+          <div><FormattedMessage id="down76" defaultMessage="EOS Master Private Key: " /><p>{eosData.masterPrivateKey}</p></div>
+          <div><FormattedMessage id="down77" defaultMessage="EOS Account name: " /><p>{eosData.address}</p></div>
 
-          <p><FormattedMessage id="down79" defaultMessage="TELOS Active Private Key: " /><a>{telosData.activePrivateKey}</a></p>
-          <p><FormattedMessage id="down80" defaultMessage="TELOS Account name: " /><a>{telosData.address}</a></p>
+          <div><FormattedMessage id="down79" defaultMessage="TELOS Active Private Key: " /><p>{telosData.activePrivateKey}</p></div>
+          <div><FormattedMessage id="down80" defaultMessage="TELOS Account name: " /><p>{telosData.address}</p></div>
 
-          <p><FormattedMessage id="down81" defaultMessage="Litecoin address: " /><a>{ltcData.address}</a></p>
-          <p><FormattedMessage id="down83" defaultMessage="Litecoin Private key: " /><a>{ltcData.privateKey}</a></p>
+          <div><FormattedMessage id="down81" defaultMessage="Litecoin address: " /><p>{ltcData.address}</p></div>
+          <div><FormattedMessage id="down83" defaultMessage="Litecoin Private key: " /><p>{ltcData.privateKey}</p></div>
         </div>
       </Modal>
     )
