@@ -74,7 +74,7 @@ export default class App extends React.Component {
       actions.user.getDemoMoney()
     }
 
-    if (process.env.LOCAL !== 'local') {
+    if (process.env.LOCAL !== 'local' && !('safari' in window)) {
       actions.pushNotification.initializeFirebase()
     }
   }
@@ -87,6 +87,7 @@ export default class App extends React.Component {
 
     setTimeout(() => {
       actions.user.sign()
+      actions.user.getReputation()
       createSwapApp()
       this.setState({ fetching: true })
     }, 1000)
