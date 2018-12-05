@@ -54,7 +54,7 @@ export default class DownloadModal extends React.Component {
 
     const account = () => (
       items.map(item => {
-        return  (
+        return (
           <Fragment>
             <p styleName="content">
               {item.fullName}
@@ -70,7 +70,8 @@ export default class DownloadModal extends React.Component {
               {(`${item.currency}` !== 'TLOS' && `${item.currency}` !== 'EOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Private key: "  />}
             </p>
             <p>{item.privateKey}</p>
-          </Fragment>)
+          </Fragment>
+        )
       })
     )
 
