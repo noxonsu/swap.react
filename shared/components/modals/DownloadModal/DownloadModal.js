@@ -53,26 +53,24 @@ export default class DownloadModal extends React.Component {
     const textToCopy = actions.user.getText()
 
     const account = () => (
-      items.map(item => {
-        return (
-          <Fragment>
-            <p styleName="content">
-              {item.fullName}
-              {(`${item.currency}` === 'EOS' || `${item.currency}` === 'TLOS') ?
-                <FormattedMessage  id={`${item.currency}124`} defaultMessage=" Account name: "  /> :
-                <FormattedMessage  id={`${item.currency}123`} defaultMessage=" address: "  /> }
-            </p>
-            <p>{item.address}</p>
-            <p styleName="content">
-              {item.fullName}
-              {(`${item.currency}` === 'EOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Master Private key: "  />}
-              {(`${item.currency}` === 'TLOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Active Private key: "  />}
-              {(`${item.currency}` !== 'TLOS' && `${item.currency}` !== 'EOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Private key: "  />}
-            </p>
-            <p>{item.privateKey}</p>
-          </Fragment>
-        )
-      })
+      items.map(item => (
+        <Fragment>
+          <p styleName="content">
+            {item.fullName}
+            {(`${item.currency}` === 'EOS' || `${item.currency}` === 'TLOS') ?
+              <FormattedMessage  id={`${item.currency}124`} defaultMessage=" Account name: "  /> :
+              <FormattedMessage  id={`${item.currency}123`} defaultMessage=" address: "  /> }
+          </p>
+          <p>{item.address}</p>
+          <p styleName="content">
+            {item.fullName}
+            {(`${item.currency}` === 'EOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Master Private key: "  />}
+            {(`${item.currency}` === 'TLOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Active Private key: "  />}
+            {(`${item.currency}` !== 'TLOS' && `${item.currency}` !== 'EOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Private key: "  />}
+          </p>
+          <p>{item.privateKey}</p>
+        </Fragment>
+      ))
     )
 
     return (
