@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import { connect } from 'redaction'
@@ -47,19 +47,41 @@ export default class DownloadModal extends React.Component {
   }
 
   render() {
-    const { name, items: [ ethData, btcData, eosData, telosData, /* bchData, */ ltcData, usdtData /* nimData */ ] } = this.props
     const { isTextCopied } = this.state
+    const { items, name } = this.props
 
-    const text = actions.user.getText()
+    const textToCopy = actions.user.getText()
+
+    const account = () => (
+      items.map(item => {
+        return  (
+          <Fragment>
+            <p styleName="content">
+              {item.fullName}
+              {(`${item.currency}` === 'EOS' || `${item.currency}` === 'TLOS') ?
+                <FormattedMessage  id={`${item.currency}124`} defaultMessage=" Account name: "  /> :
+                <FormattedMessage  id={`${item.currency}123`} defaultMessage=" address: "  /> }
+            </p>
+            <p>{item.address}</p>
+            <p styleName="content">
+              {item.fullName}
+              {(`${item.currency}` === 'EOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Master Private key: "  />}
+              {(`${item.currency}` === 'TLOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Active Private key: "  />}
+              {(`${item.currency}` !== 'TLOS' && `${item.currency}` !== 'EOS') && <FormattedMessage  id={`${item.currency}321`} defaultMessage=" Private key: "  />}
+            </p>
+            <p>{item.privateKey}</p>
+          </Fragment>)
+      })
+    )
 
     return (
       <Modal name={name} title="We don`t store your private keys and will not be able to restore them!">
         <div styleName="subTitle">
-          <p1><FormattedMessage id="down57" defaultMessage="It seems like you're using an IPhone or an IPad." /></p1>
-          <p1><FormattedMessage id="down58" defaultMessage="Just copy this keys and paste into notepad textarea" /> </p1>
-          <p1><FormattedMessage id="down59" defaultMessage="Or make the screen shot" /> </p1>
+          <FormattedMessage id="down57" defaultMessage="It seems like you're using an IPhone or an IPad." />
+          <FormattedMessage id="down58" defaultMessage=" Just copy this keys and paste into notepad textarea." />
+          <FormattedMessage id="down59" defaultMessage=" Or make the screen shot" />
         </div>
-        <CopyToClipboard text={text} onCopy={this.handleCopyText}>
+        <CopyToClipboard text={textToCopy} onCopy={this.handleCopyText}>
           <Button styleName="button" brand disabled={isTextCopied}>
             { isTextCopied ?
               <FormattedMessage id="down64" defaultMessage="Address copied to clipboard" /> :
@@ -67,31 +89,8 @@ export default class DownloadModal extends React.Component {
             }
           </Button>
         </CopyToClipboard>
-        <div styleName="content">
-          <p1><FormattedMessage id="down70" defaultMessage="Ethereum address: " /></p1>
-          <p>{ethData.address}</p>
-          <p1><FormattedMessage id="down71" defaultMessage="Ethereum Private key: " /></p1>
-          <p>{ethData.privateKey}</p>
-
-          <p1><FormattedMessage id="down73" defaultMessage="Bitcoin address: " /></p1>
-          <p>{btcData.address}</p>
-          <p1><FormattedMessage id="down74" defaultMessage="Bitcoin Private key: " /></p1>
-          <p>{btcData.privateKey}</p>
-
-          <p1><FormattedMessage id="down76" defaultMessage="EOS Master Private Key: " /></p1>
-          <p>{eosData.masterPrivateKey}</p>
-          <p1><FormattedMessage id="down77" defaultMessage="EOS Account name: " /></p1>
-          <p>{eosData.address}</p>
-
-          <p1><FormattedMessage id="down79" defaultMessage="TELOS Active Private Key: " /></p1>
-          <p>{telosData.activePrivateKey}</p>
-          <p1><FormattedMessage id="down80" defaultMessage="TELOS Account name: " /></p1>
-          <p>{telosData.address}</p>
-
-          <p1><FormattedMessage id="down81" defaultMessage="Litecoin address: " /></p1>
-          <p>{ltcData.address}</p>
-          <p1><FormattedMessage id="down83" defaultMessage="Litecoin Private key: " /></p1>
-          <p>{ltcData.privateKey}</p>
+        <div styleName="indent">
+          {account()}
         </div>
       </Modal>
     )
