@@ -20,6 +20,7 @@ import KeyActionsPanel from 'components/KeyActionsPanel/KeyActionsPanel'
 import SaveKeysModal from 'components/modals/SaveKeysModal/SaveKeysModal'
 import { FormattedMessage } from 'react-intl'
 
+
 @withRouter
 @connect(
   ({
@@ -84,6 +85,7 @@ export default class Wallet extends Component {
       ...nextState,
     });
   }
+
 
   changeView = (view) => {
     this.setState({
