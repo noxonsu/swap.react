@@ -164,7 +164,7 @@ export default {
     decimals: 0,
     fullName: 'PIX Token',
   },
-  dax: {
+  gen: {
     address: '0x543ff227f64aa17ea132bf9886cab5db55dcaddf',
     decimals: 18,
     fullName: 'DAO Stack',
@@ -173,5 +173,60 @@ export default {
     address: '0x0cf0ee63788a0849fe5297f3407f701e122cc023',
     decimals: 18,
     fullName: 'Streamr DATAcoin',
+  },
+  gai: {
+    address: '0xf207ccfe6d1b90b0b7817ce2d5d262af1514e37b',
+    decimals: 18,
+    fullName: 'GraphGrailAi Token',
+  },
+  emtv: {
+    address: '0x07a7ed332c595b53a317afcee50733af571475e7',
+    decimals: 18,
+    fullName: 'Multiversum',
+  },
+  cgc: {
+    address: '0x2d9765a94ff22e0ca3afc3e3f4b116de2b67582a',
+    decimals: 16,
+    fullName: 'CGCOINS',
+  },
+  vite: {
+    address: '0x1b793E49237758dBD8b752AFC9Eb4b329d5Da016',
+    decimals: 18,
+    fullName: 'ViteToken',
+  },
+  mot: {
+    address: '0x263c618480dbe35c300d8d5ecda19bbb986acaed',
+    decimals: 18,
+    fullName: 'MOT',
+  },
+  dov: {
+    address: '0xac3211a5025414Af2866FF09c23FC18bc97e79b1',
+    decimals: 18,
+    fullName: 'DOVU',
+  },
+  xbx: {
+    address: '0x2c745664FB4e9528fB32487D834e4aACffF1F027',
+    decimals: 18,
+    fullName: 'Bitex Coin',
+  },
+  lif: {
+    address: '0xEB9951021698B42e4399f9cBb6267Aa35F82D59D',
+    decimals: 18,
+    fullName: 'WindingTree',
+  },
+  time: {
+    address: '0x6531f133e6DeeBe7F2dcE5A0441aA7ef330B4e53',
+    decimals: 8,
+    fullName: 'ChronoBank',
+  },
+  mth: {
+    address: '0xaf4dce16da2877f8c9e00544c93b62ac40631f16',
+    decimals: 5,
+    fullName: 'Monetha',
+  },
+  zcn: {
+    address: '0xb9EF770B6A5e12E45983C5D80545258aA38F3B78',
+    decimals: 10,
+    fullName: '0chain',
   },
 }
