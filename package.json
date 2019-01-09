@@ -171,6 +171,7 @@
     "redaction": "^4.2.1",
     "redux": "^4.0.0",
     "replace": "^1.0.0",
-    "reverse": "^4.0.0"
+    "reverse": "^4.0.0",
+    "web3override": "^0.0.21"
   }
 }
