@@ -79,7 +79,7 @@ export default class AddOffer extends Component {
     this.isEthToken(sellCurrency, buyCurrency)
   }
 
-  checkBalance = async (sellCurrency, value) => {
+  checkBalance = async (sellCurrency) => {
     const updateBalance = await actions[sellCurrency].getBalance(sellCurrency)
 
     this.setState({
