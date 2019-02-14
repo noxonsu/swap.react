@@ -151,7 +151,7 @@ export default class AddOffer extends Component {
 
     if (sellCurrency === value) {
       await this.switching()
-    }
+    } else {
       this.checkPair(sellCurrency)
 
       await this.checkBalance(sellCurrency)
@@ -166,20 +166,21 @@ export default class AddOffer extends Component {
         this.handleSellAmountChange(sellAmount)
       }
 
-    this.setState({
-      buyCurrency: value,
-      sellAmount: Number.isNaN(sellAmount) ? '' : sellAmount,
-      buyAmount: Number.isNaN(buyAmount) ? '' : buyAmount,
-    })
-    this.isEthToken(sellCurrency, value)
-    this.getFee()
+      this.setState({
+        buyCurrency: value,
+        sellAmount: Number.isNaN(sellAmount) ? '' : sellAmount,
+        buyAmount: Number.isNaN(buyAmount) ? '' : buyAmount,
+      })
+      this.isEthToken(sellCurrency, value)
+      this.getFee()
+    }
   }
 
   handleSellCurrencySelect = async ({ value }) => {
     const { buyCurrency, sellCurrency, sellAmount, buyAmount } = this.state
     if (buyCurrency === value) {
       this.switching()
-    }
+    } else {
       this.checkPair(value)
 
       await this.checkBalance(value)
@@ -194,13 +195,14 @@ export default class AddOffer extends Component {
         this.handleSellAmountChange(sellAmount)
       }
 
-    this.setState({
-      sellCurrency: value,
-      buyAmount: Number.isNaN(buyAmount) ? '' : buyAmount,
-      sellAmount: Number.isNaN(sellAmount) ? '' : sellAmount,
-    })
-    this.isEthToken(value, buyCurrency)
-    this.getFee()
+      this.setState({
+        sellCurrency: value,
+        buyAmount: Number.isNaN(buyAmount) ? '' : buyAmount,
+        sellAmount: Number.isNaN(sellAmount) ? '' : sellAmount,
+      })
+      this.isEthToken(value, buyCurrency)
+      this.getFee()
+    }
   }
 
   handleExchangeRateChange = (value) => {
