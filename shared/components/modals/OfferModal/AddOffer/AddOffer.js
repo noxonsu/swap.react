@@ -74,7 +74,7 @@ export default class AddOffer extends Component {
     this.checkBalance(sellCurrency)
     this.updateExchangeRate(sellCurrency, buyCurrency)
     this.isEthToken(sellCurrency, buyCurrency)
-    this.getFee()
+    this.getFee(sellCurrency, buyCurrency)
   }
 
   getFee = () => {
@@ -163,7 +163,7 @@ export default class AddOffer extends Component {
 
     if (sellCurrency === value) {
       await this.switching()
-    } else {
+    }
       this.checkPair(sellCurrency)
 
       await this.checkBalance(sellCurrency)
@@ -177,24 +177,21 @@ export default class AddOffer extends Component {
         this.handleBuyAmountChange(buyAmount)
         this.handleSellAmountChange(sellAmount)
       }
-    }
 
     this.setState({
       buyCurrency: value,
       sellAmount: Number.isNaN(sellAmount) ? '' : sellAmount,
       buyAmount: Number.isNaN(buyAmount) ? '' : buyAmount,
-      isSellFieldInteger: config.erc20[sellCurrency] && config.erc20[sellCurrency].decimals === 0,
-      isBuyFieldInteger,
     })
     this.isEthToken(sellCurrency, value)
-    this.getFee(sellCurrency, value)
+    this.getFee()
   }
 
   handleSellCurrencySelect = async ({ value }) => {
     const { buyCurrency, sellCurrency, sellAmount, buyAmount } = this.state
     if (buyCurrency === value) {
-      await this.switching()
-    } else {
+      this.switching()
+    }
       this.checkPair(value)
 
       await this.checkBalance(value)
@@ -208,17 +205,14 @@ export default class AddOffer extends Component {
         this.handleBuyAmountChange(buyAmount)
         this.handleSellAmountChange(sellAmount)
       }
-    }
 
     this.setState({
       sellCurrency: value,
       buyAmount: Number.isNaN(buyAmount) ? '' : buyAmount,
       sellAmount: Number.isNaN(sellAmount) ? '' : sellAmount,
-      isSellFieldInteger,
-      isBuyFieldInteger: config.erc20[buyCurrency] && config.erc20[buyCurrency].decimals === 0,
     })
     this.isEthToken(value, buyCurrency)
-    this.getFee(value, buyCurrency)
+    this.getFee()
   }
 
   handleExchangeRateChange = (value) => {
@@ -424,7 +418,7 @@ export default class AddOffer extends Component {
   render() {
     const { currencies, tokenItems, addSelectedItems } = this.props
     const { exchangeRate, buyAmount, sellAmount, buyCurrency, sellCurrency, minimalestAmountForSell, minimalestAmountForBuy,
-      balance, isBuyFieldInteger, isSellFieldInteger, ethBalance, manualRate, isPartial, isTokenSell, isTokenBuy } = this.state
+      balance, ethBalance, manualRate, isPartial, isTokenSell, isTokenBuy } = this.state
 
     const linked = Link.all(this, 'exchangeRate', 'buyAmount', 'sellAmount')
 
@@ -439,7 +433,7 @@ export default class AddOffer extends Component {
     const isDisabled = !exchangeRate
       || !buyAmount && !sellAmount
       || BigNumber(sellAmount).isGreaterThan(balance)
-      || !isToken && BigNumber(sellAmount).isLessThan(minimalAmountSell)
+      || BigNumber(sellAmount).isLessThan(minimalAmountSell)
       || BigNumber(buyAmount).isLessThan(minimalAmountBuy)
 
     if (linked.sellAmount.value !== '' && linked.sellAmount.value > 0) {
@@ -447,7 +441,7 @@ export default class AddOffer extends Component {
         <span style={{ position: 'relative', marginRight: '44px' }}>
           <FormattedMessage id="transaction444" defaultMessage="Sell amount must be greater than " />
           {' '}
-          {`${minimalAmountSell}`}
+          {minimalAmountSell}
         </span>
       )
     }
@@ -456,7 +450,7 @@ export default class AddOffer extends Component {
         <span style={{ position: 'relative', marginRight: '44px' }}>
           <FormattedMessage id="transaction450" defaultMessage="Buy amount must be greater than " />
           {' '}
-          {`${minimalAmountBuy}`}
+          {minimalAmountBuy}
         </span>
       )
     }
