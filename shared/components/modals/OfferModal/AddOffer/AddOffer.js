@@ -115,8 +115,8 @@ export default class AddOffer extends Component {
     const isTokenBuy = helpers.ethToken.isEthToken({ name: buyCurrency })
 
     this.setState(() => ({
-       isTokenBuy,
-       isTokenSell,
+      isTokenBuy,
+      isTokenSell,
     }))
   }
 
