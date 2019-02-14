@@ -111,25 +111,13 @@ export default class AddOffer extends Component {
   }
 
   isEthToken = (sellCurrency, buyCurrency) => {
-    if (helpers.ethToken.isEthToken({ name: sellCurrency })) {
-      this.setState(() => ({
-        isTokenSell: true,
-      }))
-    } else {
-      this.setState(() => ({
-        isTokenSell: false,
-      }))
-    }
+    const isTokenSell = helpers.ethToken.isEthToken({ name: sellCurrency })
+    const isTokenBuy = helpers.ethToken.isEthToken({ name: buyCurrency })
 
-    if (helpers.ethToken.isEthToken({ name: buyCurrency })) {
-      this.setState(() => ({
-        isTokenBuy: true,
-      }))
-    } else {
-      this.setState(() => ({
-        isTokenBuy: false,
-      }))
-    }
+    this.setState(() => ({
+       isTokenBuy,
+       isTokenSell,
+    }))
   }
 
   correctMinAmountSell = async (sellCurrency) => {
